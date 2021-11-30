@@ -17,6 +17,7 @@
 
     <!-- Main -->
     <main class="content">
+      <!-- Bot Telegram -->
       <section class="tele">
         <h2 class="tele__title">Bot Telegram</h2>
         <div class="tele__setting">
@@ -25,8 +26,13 @@
         </div>
         <p class="tele__detail">Bot tidak mengirimkan pesan</p>
       </section>
+      <!-- Akhir Bot Telegram -->
+
+      <!-- Tool -->
       <section class="tool">
-      <div class="timer">
+
+        <!-- Timer  -->
+        <div class="timer">
           <h3 class="timer__title">Timer</h3>
           <div class="slider">
             <input type="range" min="10" max="60" value="20" step="5" class="slider__tab">
@@ -34,24 +40,30 @@
             <p class="slider__sec">Detik</p>
           </div>
         </div>
+        <!-- Akhir Timer -->
+
         <h2 class="tool__title">Marketplace Binance</h2>
-        <?php 
-          $prices = json_decode(file_get_contents('https://api.binance.me/api/v3/ticker/price'));
 
-          // limit 100 per halaman
-          $limit = 100;
-          $total_items = count($prices); // total items
-          $total_pages = ceil($total_items / $limit);
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <label for="dropdown__page">Halaman</label>
+          <select class="dropdown__page"><?php include "limit.php" ?></select>
+          <label for="dropdown__limit">Jumlah</label>
+          <select name="limit" class="dropdown__limit">
+            <option <?= $limit == 10 ? ' selected="selected"' : '';?>>10</option>
+            <option <?= $limit == 25 ? ' selected="selected"' : '';?>>25</option>
+            <option <?= $limit == 50 ? ' selected="selected"' : '';?>>50</option>
+            <option <?= $limit == 75 ? ' selected="selected"' : '';?>>75</option>
+            <option <?= $limit == 100 ? ' selected="selected"' : '';?>>100</option>
+            <option>Tampilkan Semua</option>
+          </select>
+        </div>
+        <!-- Akhir Dropdown -->
 
-          for($x = 1; $x <= $total_pages; $x++):
-            if ($x == 1) {
-              echo "<a class=\"page page--active\" href=\"binance.php?page=$x\">$x</a>";
-            } else {
-              echo "<a class=\"page\" href=\"binance.php?page=$x\">$x</a>";
-            }
-          endfor;
-        ?>
       </section>
+      <!-- Akhir Tool -->
+
+      <!-- Tabel -->
       <section class="table">
         <table>
           <thead>
@@ -66,11 +78,11 @@
               <th class="table__header table__header--highest">Is Highest?</th>
             </tr>
           </thead>
-          <tbody class="table__body">
-            
-          </tbody>
+          <tbody class="table__body"></tbody>
         </table>
       </section>
+      <!-- Akhir Tabel -->
+
     </main>
     <!-- Akhir Main -->
 
@@ -80,6 +92,7 @@
     </footer>
     <!-- Akhir Footer -->
 
+    <!-- Scripts -->
     <script src="js/main.js"></script>
   </body>
 </html>

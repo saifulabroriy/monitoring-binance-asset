@@ -122,7 +122,7 @@ table {
   margin-bottom: 1.5rem;
 
   &__title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: center;
     margin-bottom: 1rem;
   }
@@ -141,38 +141,56 @@ table {
     text-align: center;
     margin-bottom: 1rem;
   }
+}
 
-  .slider {
-    display: flex;
+// Slider
+.slider {
+  display: flex;
 
-    &__tab {
+  &__tab {
+    -webkit-appearance: none;
+    background: linear-gradient(to right, #1cb81c 20%, #fff 20%);
+    width: 100%;
+    height: 15px;
+    border-radius: 10px;
+    margin-right: 1rem;
+
+    &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      background: linear-gradient(to right, #1cb81c 20%, #fff 20%);
-      width: 100%;
-      height: 15px;
-      border-radius: 10px;
-      margin-right: 1rem;
-
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: lighten($color: #007500, $amount: 10);
-        border: 2px solid black;
-        cursor: pointer;
-      }
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: lighten($color: #007500, $amount: 10);
+      border: 2px solid black;
+      cursor: pointer;
     }
+  }
 
-    &__value,
-    &__sec {
-      font-weight: bold;
-    }
+  &__value,
+  &__sec {
+    font-weight: bold;
+  }
 
-    &__value {
-      margin-right: 3px;
-    }
+  &__value {
+    margin-right: 3px;
+  }
+}
+
+// Dropdown
+.dropdown {
+  display: flex;
+  justify-content: end;
+  margin: 0 0.5rem 1.5rem 0.5rem;
+
+  &__page {
+    width: 100px;
+    margin-right: 20px;
+  }
+
+  &__page,
+  &__limit {
+    margin-left: 10px;
   }
 }
 
@@ -263,7 +281,8 @@ table {
     }
   }
 
-  .table {
+  .table,
+  .dropdown {
     margin: 0 5% 1.5rem 5%;
 
     &__header,

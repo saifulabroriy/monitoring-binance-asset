@@ -1,10 +1,7 @@
 // Fungsi untun menampilkan aset ke website
-function getMarkets(state = false) {
-    // Mendapatkan url page active
-    href = $(".page--active").attr("href")
-
+function getMarkets(page = 1, limit = 25, state = false) {
     // Http Request get ke href
-    $.get(href, {state}, function(data, status){
+    $.get(`binance.php?page=${page}`, {state, limit}, function(data, status){
         // Isi tabel
         $(".table__body").html(data)
     });
@@ -55,25 +52,36 @@ getMarkets()
 
 // Interval tergantung user
 setInterval(() => {
+    const page = $(".dropdown__page option:selected").html()
+
     if (startBot.hasClass("tele__btn--clicked")){
-        getMarkets(true)
+        getMarkets(page, true)
     } else if (stopBot.hasClass("tele__btn--clicked")) {
-        getMarkets()
+        getMarkets(page)
     }
 }, timer * 1000);
 
-// Prevent link reload halaman
-$( ".page" ).click(function(e) {
-    e.preventDefault();
+$(".dropdown__page").on("change", function () {
+    const page = $(".dropdown__page option:selected").html()
+    const limit = $(".dropdown__limit option:selected").html()
 
-    if (!$(this).hasClass("page--active")) {
-        $(".page--active").removeClass("page--active")
-        $(this).addClass("page--active")
-
-        if (startBot.hasClass("tele__btn--clicked")){
-            getMarkets(true)
-        } else if (stopBot.hasClass("tele__btn--clicked")) {
-            getMarkets()
-        }
+    if (startBot.hasClass("tele__btn--clicked")){
+        getMarkets(page, limit, true)
+    } else if (stopBot.hasClass("tele__btn--clicked")) {
+        getMarkets(page, limit)
     }
-});
+})
+
+$(".dropdown__limit").on("change", function () {
+    const limit = $(".dropdown__limit option:selected").html()
+
+    $.get('limit.php', {limit}, function (data, status) {
+        $(".dropdown__page").html(data)
+    })
+
+    if (startBot.hasClass("tele__btn--clicked")){
+        getMarkets(1, limit, true)
+    } else if (stopBot.hasClass("tele__btn--clicked")) {
+        getMarkets(1, limit)
+    }
+})

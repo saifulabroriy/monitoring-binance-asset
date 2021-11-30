@@ -4,6 +4,7 @@
 
     // Mendapatkan state bot telegram
     $state = $_GET["state"];
+    $limit = $_GET["limit"];
 
     // Fungsi mendapatkan data di return menjadi JSON dari URL
     function getData($url){
@@ -37,11 +38,12 @@
     $url = "https://api.binance.me/api/v3/ticker/24hr";
     $ticker = getData($url);
 
+    if ($limit == "Tampilkan Semua") {
+        $limit = count($ticker);
+    }
+
     // Jika page tidak diisi maka page = 1
     $page = !isset($_GET['page']) ? 1 : $_GET['page'];
-    
-    // limit
-    $limit = 100;
 
     // posisi atau cursor
     $offset = ($page - 1) * $limit;
@@ -74,7 +76,7 @@
         }
     }
     
-    $num = 1;
+    $num = $offset + 1;
     for($i = 0; $i <= count($limited_ticker) - 1; $i++) {
         // membongkar menjadi beberapa variable agar mudah
         $koin = $limited_symbols[$i]->baseAsset;
