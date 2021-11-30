@@ -29,6 +29,27 @@ stopBot.click(function() {
     teleDetail.html("Bot tidak mengirimkan pesan")
 })
 
+// Slider
+const sliderTab = $(".slider__tab")
+const sliderValue = $(".slider__value")
+
+// nilai detik
+let timer = sliderTab.val()
+
+// Show initial value of slider
+sliderValue.html(timer)
+
+// Update value
+sliderTab.on('input', function () {
+    timer = sliderTab.val()
+    sliderValue.html(timer)
+})
+
+sliderTab.on('mousemove', function () {
+    const color = `linear-gradient(to right, #1cb81c ${((timer - 10) * 100) / (60 - 10)}%, #fff ${((timer - 10) * 100) / (60 - 10)}%)`
+    $(this).css("background", color)
+})
+
 // Price awal
 getMarkets()
 
@@ -39,7 +60,7 @@ setInterval(() => {
     } else if (stopBot.hasClass("tele__btn--clicked")) {
         getMarkets()
     }
-}, 10000);
+}, timer * 1000);
 
 // Prevent link reload halaman
 $( ".page" ).click(function(e) {
@@ -54,11 +75,5 @@ $( ".page" ).click(function(e) {
         } else if (stopBot.hasClass("tele__btn--clicked")) {
             getMarkets()
         }
-
-        // href = $(".page--active").attr("href")
-        // $.get(href, {state: false}, function(data, status){
-        //     // Isi tabel
-        //     $(".table__body").html(data)
-        // });
     }
 });

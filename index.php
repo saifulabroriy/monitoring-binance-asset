@@ -26,6 +26,14 @@
         <p class="tele__detail">Bot tidak mengirimkan pesan</p>
       </section>
       <section class="tool">
+      <div class="timer">
+          <h3 class="timer__title">Timer</h3>
+          <div class="slider">
+            <input type="range" min="10" max="60" value="20" step="5" class="slider__tab">
+            <span class="slider__value"></span>
+            <p class="slider__sec">Detik</p>
+          </div>
+        </div>
         <h2 class="tool__title">Marketplace Binance</h2>
         <?php 
           $prices = json_decode(file_get_contents('https://api.binance.me/api/v3/ticker/price'));
