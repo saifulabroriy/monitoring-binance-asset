@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #02aab0;
+  background: -webkit-linear-gradient(to right, #00cdac, #02aab0);
+  background: linear-gradient(to right, #00cdac, #02aab0);
+  background-size: cover;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: none;
+  align-items: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.header {
+  background-color: rgba(0, 117, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+.header__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.tele {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: none;
+  align-items: center;
+}
+.tele__title, .tele__setting {
+  margin-bottom: 1rem;
+}
+.tele__title {
+  font-size: 1.1rem;
+  text-align: center;
+}
+.tele__btn {
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid black;
+  border-radius: 1.5rem;
+  padding: 0.5em 1.5em;
+  transition: all 0.3s ease-in-out;
+}
+.tele__btn:hover, .tele__btn--clicked {
+  background-color: rgba(0, 117, 0, 0.2);
+  cursor: pointer;
+}
+.tele__detail {
+  font-weight: bold;
+}
+
+.tool {
+  margin-bottom: 1.5rem;
+}
+.tool__title {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.table {
+  font-size: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  margin: 0 0.5rem 1.5rem 0.5rem;
+  overflow: auto;
+}
+.table__row:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.table__header, .table__item {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+.table__header {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.table__header--number {
+  width: 50px;
+}
+.table__header--coin, .table__header--pair {
+  width: 100px;
+}
+.table__header--last, .table__header--low, .table__header--high {
+  min-width: 120px;
+}
+.table__header--lowest, .table__header--highest {
+  min-width: 130px;
+}
+.table__item {
+  font-weight: 500;
+}
+.table__item--last, .table__item--low, .table__item--high, .table__item--lowest, .table__item--highest {
+  text-align: end;
+}
+
+.footer {
+  background-color: rgba(0, 117, 0, 0.2);
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
+  padding: 1rem 0;
+  position: sticky;
+  margin-top: auto;
+}
+.footer__text {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .tele__title {
+    font-size: 1.4rem;
+  }
+  .tele__btn {
+    font-size: 1rem;
+  }
+
+  .table {
+    margin: 0 5% 1.5rem 5%;
+  }
+  .table__header, .table__item {
+    font-size: 1.1rem;
+  }
+
+  .footer__text {
+    font-size: 1rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

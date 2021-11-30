@@ -1,0 +1,229 @@
+// Context
+// 1. Variables
+// 2. Mixins
+// 3. Reset
+// 4. Base
+// 5. Main
+// 6. Responsive
+
+// 1. Variables
+
+// Background Color
+$prim-bg: linear-gradient(to right, #00cdac, #02aab0);
+$alt-bg: -webkit-linear-gradient(to right, #00cdac, #02aab0);
+$fallback-bg: #02aab0;
+
+// Text Color
+$prim-color: #fff;
+
+// 2. Mixins
+@mixin tran-ease {
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin display-flex($justify: start, $align: start) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin respond($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// 3. Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// 4. Base
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: $fallback-bg;
+  background: $alt-bg;
+  background: $prim-bg;
+  background-size: cover;
+  min-height: 100%;
+  @include display-flex(none, none);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+// 5. Main
+// Header
+.header {
+  background-color: rgba($color: #007500, $alpha: 0.2);
+  box-shadow: 0 1px 5px rgba($color: #000000, $alpha: 0.5);
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+
+  &__title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+// Bot Telegram
+.tele {
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  @include display-flex(none, center);
+
+  &__title,
+  &__setting {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  &__btn {
+    font-size: 0.8rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    padding: 0.5em 1.5em;
+    @include tran-ease;
+
+    &:hover,
+    &--clicked {
+      background-color: rgba($color: #007500, $alpha: 0.2);
+      cursor: pointer;
+    }
+  }
+
+  &__detail {
+    font-weight: bold;
+  }
+}
+
+// Tool
+.tool {
+  margin-bottom: 1.5rem;
+
+  &__title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+// Table
+.table {
+  font-size: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  margin: 0 0.5rem 1.5rem 0.5rem;
+  overflow: auto;
+
+  &__row:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &__header,
+  &__item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &__header {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &--number {
+      width: 50px;
+    }
+
+    &--coin,
+    &--pair {
+      width: 100px;
+    }
+
+    &--last,
+    &--low,
+    &--high {
+      min-width: 120px;
+    }
+
+    &--lowest,
+    &--highest {
+      min-width: 130px;
+    }
+  }
+
+  &__item {
+    font-weight: 500;
+
+    &--last,
+    &--low,
+    &--high,
+    &--lowest,
+    &--highest {
+      text-align: end;
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: rgba($color: #007500, $alpha: 0.2);
+  box-shadow: 0 -1px 5px rgba($color: #000000, $alpha: 0.5);
+  padding: 1rem 0;
+  position: sticky;
+  margin-top: auto;
+
+  &__text {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+// 6. Responsive
+// Desktop
+@include respond(768px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .tele {
+    &__title {
+      font-size: 1.4rem;
+    }
+
+    &__btn {
+      font-size: 1rem;
+    }
+  }
+
+  .table {
+    margin: 0 5% 1.5rem 5%;
+
+    &__header,
+    &__item {
+      font-size: 1.1rem;
+    }
+  }
+
+  .footer__text {
+    font-size: 1rem;
+  }
+}
