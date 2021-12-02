@@ -72,6 +72,7 @@ table {
 }
 .tele__detail {
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .tool {
