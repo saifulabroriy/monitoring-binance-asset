@@ -53,11 +53,12 @@ getMarkets()
 // Interval tergantung user
 setInterval(() => {
     const page = $(".dropdown__page option:selected").html()
+    const limit = $(".dropdown__limit option:selected").html()
 
     if (startBot.hasClass("tele__btn--clicked")){
-        getMarkets(page, true)
+        getMarkets(page, limit, true)
     } else if (stopBot.hasClass("tele__btn--clicked")) {
-        getMarkets(page)
+        getMarkets(page, limit)
     }
 }, timer * 1000);
 
