@@ -66,6 +66,12 @@
         $lowest = $last - $low;
         $highest = $high - $last;
 
+        /* 
+        NOTE: 
+            Kemungkinan di binance terdapat asset yang nilainya 0 sehingga lowest dan highest selalu 0.
+            Hal ini mengakibatkan asset termasuk di kedua kategori LOW dan HIGH dan membuat pesan telegram campuraduk
+        */
+        
         // Cek price
         if($lowest <= 0){
             array_push($low_asset, "$koin/$pair");
